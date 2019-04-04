@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {
   Button,
   Container,
-  Divider,
   Grid,
   Header,
   Icon,
@@ -16,6 +15,9 @@ import {
   Visibility
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import Form from "./components/ReferralForm";
+import SchoolDistrictForm from "./components/SchoolDistrictForm";
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -30,34 +32,26 @@ const getWidth = () => {
 /* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
  * such things.
  */
+// ***************************************THIS IS THE HOME PAGE HEADING*******************************************************************************
 const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Image src="https://cdn.wallpapersafari.com/51/32/U1G9Ec.jpg" />
-    <Header
-      as="h1"
-      content="Prodigy Healthcare Inc"
-      inverted
-      style={{
-        fontSize: mobile ? "2em" : "4em",
-        fontWeight: "normal",
-        marginBottom: 0,
-        marginTop: mobile ? "1.5em" : "3em"
-      }}
-    />{" "}
-    <Header
-      as="h2"
-      content="To excel in comprehensive and integrated care and activities for youth and their families."
-      inverted
-      style={{
-        fontSize: mobile ? "1.5em" : "1.7em",
-        fontWeight: "normal",
-        marginTop: mobile ? "0.5em" : "1.5em"
-      }}
-    />{" "}
-    <Button primary size="huge">
-      Contact Us <Icon name="right arrow" />
-    </Button>{" "}
-  </Container>
+  <Router>
+    <Container text>
+      <Image src="http://i68.tinypic.com/xlgnt0.png" />
+      <Header
+        as="h2"
+        content="To excel in comprehensive and integrated care and activities for youth and their families."
+        inverted
+        style={{
+          fontSize: mobile ? "1.5em" : "1.7em",
+          fontWeight: "normal",
+          marginTop: mobile ? "0.5em" : "1.5em"
+        }}
+      />{" "}
+      <Link to="/ReferralForm" primary size="huge" inverted color="orange">
+        Contact Us <Icon name="right arrow" />
+      </Link>{" "}
+    </Container>
+  </Router>
 );
 
 HomepageHeading.propTypes = {
@@ -68,6 +62,7 @@ HomepageHeading.propTypes = {
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
  */
+
 class DesktopContainer extends Component {
   state = {};
 
@@ -85,45 +80,50 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
-        <Visibility
-          once={false}
-          onBottomPassed={this.showFixedMenu}
-          onBottomPassedReverse={this.hideFixedMenu}
+      <Router>
+        <Responsive
+          getWidth={getWidth}
+          minWidth={Responsive.onlyTablet.minWidth}
         >
-          <Segment
-            inverted
-            textAlign="center"
-            style={{
-              minHeight: 1000,
-              padding: "1em 0em"
-            }}
-            vertical
+          <Visibility
+            once={false}
+            onBottomPassed={this.showFixedMenu}
+            onBottomPassedReverse={this.hideFixedMenu}
           >
-            <Menu
-              fixed={fixed ? "top" : null}
-              inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
-              size="large"
+            <Segment
+              inverted
+              textAlign="center"
+              style={{
+                minHeight: 575,
+                padding: "1em 0em"
+              }}
+              vertical
             >
-              <Container>
-                <Menu.Item as="a" active>
-                  Home{" "}
-                </Menu.Item>{" "}
-                <Menu.Item as="a"> Our Programs </Menu.Item>{" "}
-                <Menu.Item position="right">
-                  <Button as="a" inverted={!fixed}>
-                    School Districts
-                  </Button>{" "}
-                </Menu.Item>{" "}
-              </Container>{" "}
-            </Menu>{" "}
-            <HomepageHeading />
-          </Segment>{" "}
-        </Visibility>
-        {children}{" "}
-      </Responsive>
+              <Menu
+                fixed={fixed ? "top" : null}
+                inverted={!fixed}
+                pointing={!fixed}
+                secondary={!fixed}
+                size="large"
+              >
+                <Container>
+                  <Menu.Item as="a" active>
+                    Home{" "}
+                  </Menu.Item>{" "}
+                  <Menu.Item as="a"> Our Programs </Menu.Item>{" "}
+                  <Menu.Item position="right">
+                    <Link as="a" to="/SchoolDistrictForm" inverted={!fixed}>
+                      School Districts{" "}
+                    </Link>{" "}
+                  </Menu.Item>{" "}
+                </Container>{" "}
+              </Menu>{" "}
+              <HomepageHeading />
+            </Segment>{" "}
+          </Visibility>{" "}
+          {children}{" "}
+        </Responsive>
+      </Router>
     );
   }
 }
@@ -163,11 +163,11 @@ class MobileContainer extends Component {
           vertical
           visible={sidebarOpened}
         >
-          <Menu.Item as="a">Are you a School District? </Menu.Item>{" "}
-          <Menu.Item as="a">Programs </Menu.Item>{" "}
+          <Menu.Item as="a"> Are you a School District ? </Menu.Item>{" "}
+          <Menu.Item as="a"> Programs </Menu.Item>{" "}
           <Menu.Item as="a"> Contact Us </Menu.Item>{" "}
-          <Menu.Item as="a"> Careers</Menu.Item>{" "}
-        </Sidebar>
+          <Menu.Item as="a"> Careers </Menu.Item>{" "}
+        </Sidebar>{" "}
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
             inverted
@@ -184,12 +184,12 @@ class MobileContainer extends Component {
                   <Icon name="sidebar" />
                 </Menu.Item>{" "}
                 <Menu.Item position="right">
-                  <Button as="a">School Districts</Button>{" "}
+                  <Button as="a"> School Districts </Button>{" "}
                 </Menu.Item>{" "}
               </Menu>{" "}
             </Container>{" "}
             <HomepageHeading mobile />
-          </Segment>
+          </Segment>{" "}
           {children}{" "}
         </Sidebar.Pusher>{" "}
       </Responsive>
@@ -216,7 +216,7 @@ const HomepageLayout = () => (
   <ResponsiveContainer>
     <Segment
       style={{
-        padding: "8em 0em"
+        padding: "5em 0em"
       }}
       vertical
     >
@@ -238,13 +238,13 @@ const HomepageLayout = () => (
             Our mission is to provide comprehensive services to help young
             adults and their families achieve and maintain a healthy, productive
             lifestyle including substance abuse recovery, behavioral health
-            services and after school programming. We guide young adults toward
-            a life of excellence, leadership and service. Young adults are
-            taught responsibility, accountability, life skills, social skills
-            and work ethic, while receiving an equal blend of therapeutic and
-            clinical services. Prodigy Healthcare, Inc. serves youth and their
-            families through evidence-based programming designed to promote
-            pro-social behavior and healthy lifestyles.{" "}
+            services and after school programming.We guide young adults toward a
+            life of excellence, leadership and service.Young adults are taught
+            responsibility, accountability, life skills, social skills and work
+            ethic, while receiving an equal blend of therapeutic and clinical
+            services.Prodigy Healthcare, Inc.serves youth and their families
+            through evidence - based programming designed to promote pro -
+            social behavior and healthy lifestyles.{" "}
           </p>{" "}
         </Grid.Row>{" "}
         <Grid.Row>
@@ -294,21 +294,14 @@ const HomepageLayout = () => (
               paddingTop: "5em"
             }}
           >
-            <Header
-              as="h3"
-              style={{
-                fontSize: "2em"
-              }}
-            >
-              "ENTER REALLY SICK QUOTE"{" "}
-            </Header>{" "}
+            <Image src="http://i65.tinypic.com/1k8di.png" />
           </Grid.Column>{" "}
         </Grid.Row>{" "}
       </Grid>{" "}
     </Segment>{" "}
     <Segment
       style={{
-        padding: "8em 0em"
+        padding: "5em 0em"
       }}
       vertical
     >
@@ -326,9 +319,9 @@ const HomepageLayout = () => (
             fontSize: "1.33em"
           }}
         >
-          Every single team member of Prodigy Healthcare Inc. is committed to
+          Every single team member of Prodigy Healthcare Inc.is committed to
           providing the highest quality of counseling services available to all
-          adolescents and their families. Prodigy Healthcare Inc. counselors are
+          adolescents and their families.Prodigy Healthcare Inc.counselors are
           registered or certified with one of eight state approved accrediting
           agencies for substance abuse counseling certification.{" "}
         </p>{" "}
@@ -361,11 +354,12 @@ const HomepageLayout = () => (
             <Grid.Column width={7}>
               <Header inverted as="h4" content="Services" />
               <Header as="h4" inverted>
-                jd@prodigy-hc.com{" "}
+                info @prodigy - hc.com{" "}
               </Header>{" "}
-              <p>(559) 892-9452 </p>{" "}
+              <p> (559) 892 - 9452 </p>{" "}
               <Header as="h4" dimmed>
-                © 2019 Prodigy Healthcare Inc. All Rights Reserved.{" "}
+                {" "}
+                © 2019 Prodigy Healthcare Inc.All Rights Reserved.{" "}
               </Header>{" "}
             </Grid.Column>{" "}
           </Grid.Row>{" "}
