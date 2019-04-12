@@ -6,10 +6,17 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import ReferralForm from "./components/ReferralForm";
+import SchoolDistrictForm from "./components/SchoolDistrictForm";
 ReactDOM.render(
   <Router>
     <Route exact path="/" component={App} />
     <Route exact strict path="/ReferralForm" component={ReferralForm} />
+    <Route
+      exact
+      strict
+      path="/SchoolDistrictForm"
+      component={SchoolDistrictForm}
+    />
   </Router>,
   document.getElementById("root")
 );

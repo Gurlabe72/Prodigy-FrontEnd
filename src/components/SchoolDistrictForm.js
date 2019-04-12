@@ -10,7 +10,8 @@ import {
   Menu,
   Container,
   Visibility,
-  TextArea
+  TextArea,
+  Checkbox
 } from "semantic-ui-react";
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -18,7 +19,7 @@ const getWidth = () => {
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
-class SchoolDistrictForm extends Component {
+class ReferralForm extends Component {
   state = {};
 
   hideFixedMenu = () =>
@@ -82,52 +83,34 @@ class SchoolDistrictForm extends Component {
             </Visibility>{" "}
             {children}{" "}
           </Responsive>{" "}
-          <Grid celled="internally">
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>{" "}
-              <Grid.Column width={10}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    fluid
-                    label="First name"
-                    placeholder="First name"
-                  />
-                  <Form.Input fluid label="Last name" placeholder="Last name" />
-                  <Form.Input
-                    fluid
-                    label="Email"
-                    placeholder="example@email.com"
-                  />
-                  <Form.Input
-                    fluid
-                    label="Phone number"
-                    placeholder="(---) --- - ---"
-                  />
-                  <TextArea width={10} rows={2} placeholder="Tell us more" />{" "}
-                </Form.Group>{" "}
-              </Grid.Column>{" "}
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>{" "}
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>{" "}
-              <Grid.Column width={10}>
-                <Button content="Submit" />
-              </Grid.Column>{" "}
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>{" "}
-            </Grid.Row>{" "}
-          </Grid>{" "}
+          <div inverted>
+            <Form
+              veritcal
+              size="huge"
+              style={{
+                padding: "1em"
+              }}
+            >
+              <Form.Field>
+                <h1> School District Name </h1>{" "}
+                <input placeholder="Enter your name" />
+              </Form.Field>{" "}
+              <Form.Field>
+                <h1> Email of Contact </h1>{" "}
+                <input placeholder="Email@email.com" />
+              </Form.Field>{" "}
+              <Form.Field>
+                <h1> Phone Number </h1> <input placeholder="(---)---_----" />
+              </Form.Field>{" "}
+              <h1> Message </h1>{" "}
+              <Form.TextArea placeholder="How May We Assit you?" />
+              <Button type="submit"> Send </Button>{" "}
+            </Form>{" "}
+          </div>
         </Fragment>{" "}
       </div>
     );
   }
 }
 
-export default SchoolDistrictForm;
+export default ReferralForm;

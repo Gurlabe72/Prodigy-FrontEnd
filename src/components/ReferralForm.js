@@ -10,7 +10,8 @@ import {
   Menu,
   Container,
   Visibility,
-  TextArea
+  TextArea,
+  Checkbox
 } from "semantic-ui-react";
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -35,7 +36,11 @@ class ReferralForm extends Component {
     const { fixed } = this.state;
 
     return (
-      <div className={{ flex: 1 }}>
+      <div
+        className={{
+          flex: 1
+        }}
+      >
         <Fragment>
           <Responsive
             getWidth={getWidth}
@@ -77,56 +82,28 @@ class ReferralForm extends Component {
               </Segment>{" "}
             </Visibility>{" "}
             {children}{" "}
-          </Responsive>
-          <Grid celled="internally">
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>
-              <Grid.Column width={10}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    fluid
-                    label="First name"
-                    placeholder="First name"
-                  />
-                  <Form.Input fluid label="Last name" placeholder="Last name" />
-                  <Form.Input
-                    fluid
-                    label="Email"
-                    placeholder="example@email.com"
-                  />
-                  <Form.Input
-                    fluid
-                    label="Phone number"
-                    placeholder="(---) --- - ---"
-                  />
-                  <Form.TextArea
-                    fluid
-                    label="Tell us about yourself."
-                    placeholder="Input Here"
-                    style={{ minHeight: 100 }}
-                  />
-                </Form.Group>{" "}
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>
-              <Grid.Column width={10}>
-                <Button content="Submit" />
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Fragment>
+          </Responsive>{" "}
+          <Form
+            veritcal
+            size="huge"
+            style={{
+              padding: "1em"
+            }}
+          >
+            <Form.Field>
+              <h1> Name </h1> <input placeholder="Enter your name" />
+            </Form.Field>{" "}
+            <Form.Field>
+              <h1> Email </h1> <input placeholder="Email@email.com" />
+            </Form.Field>{" "}
+            <Form.Field>
+              <h1> Phone Number </h1> <input placeholder="(---)---_----" />
+            </Form.Field>{" "}
+            <h1> Message </h1>
+            <Form.TextArea placeholder="How May We Assit you?" />
+            <Button type="submit"> Send </Button>{" "}
+          </Form>{" "}
+        </Fragment>{" "}
       </div>
     );
   }

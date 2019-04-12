@@ -16,23 +16,13 @@ import {
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import Form from "./components/ReferralForm";
-import SchoolDistrictForm from "./components/SchoolDistrictForm";
 
-// Heads up!
-// We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
-// For more advanced usage please check Responsive docs under the "Usage" section.
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
 
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
-/* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
-// ***************************************THIS IS THE HOME PAGE HEADING*******************************************************************************
 const HomepageHeading = ({ mobile }) => (
   <Router>
     <Container text>
@@ -50,18 +40,13 @@ const HomepageHeading = ({ mobile }) => (
       <Link to="/ReferralForm" primary size="huge" inverted color="orange">
         Contact Us <Icon name="right arrow" />
       </Link>{" "}
-    </Container>
+    </Container>{" "}
   </Router>
 );
 
 HomepageHeading.propTypes = {
   mobile: PropTypes.bool
 };
-
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
 
 class DesktopContainer extends Component {
   state = {};
@@ -94,7 +79,7 @@ class DesktopContainer extends Component {
               inverted
               textAlign="center"
               style={{
-                minHeight: 575,
+                minHeight: 200,
                 padding: "1em 0em"
               }}
               vertical
@@ -122,7 +107,7 @@ class DesktopContainer extends Component {
             </Segment>{" "}
           </Visibility>{" "}
           {children}{" "}
-        </Responsive>
+        </Responsive>{" "}
       </Router>
     );
   }
@@ -274,7 +259,7 @@ const HomepageLayout = () => (
                 fontSize: "2em"
               }}
             >
-              A Message from our CEO{" "}
+              <h1> From our CEO </h1> <h2> JD Dhanda </h2>{" "}
               <p
                 style={{
                   fontSize: "1.33em"
@@ -282,20 +267,20 @@ const HomepageLayout = () => (
               >
                 <Image
                   avatar
-                  src="data:image/jpeg;base64,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"
-                />
-                <b> JD </b> Chief Officer Badass{" "}
+                  src="https://s3-media2.fl.yelpcdn.com/bphoto/iTe51Wt32z1SBB4TBLJynA/ls.jpg"
+                />{" "}
+                "We here at Prodigy Healthcare strive to...."{" "}
               </p>{" "}
             </Header>{" "}
           </Grid.Column>{" "}
-          <Grid.Column
+          {/* <Grid.Column
             style={{
               paddingBottom: "5em",
               paddingTop: "5em"
             }}
           >
             <Image src="http://i65.tinypic.com/1k8di.png" />
-          </Grid.Column>{" "}
+          </Grid.Column>{" "} */}
         </Grid.Row>{" "}
       </Grid>{" "}
     </Segment>{" "}
@@ -330,42 +315,53 @@ const HomepageLayout = () => (
         </Button>{" "}
       </Container>{" "}
     </Segment>{" "}
-    <Segment
-      inverted
-      vertical
-      style={{
-        padding: "5em 0em"
-      }}
-    >
-      <Container>
-        <Grid divided inverted stackable>
-          <Grid.Row>
-            <Grid.Column width={3}>
-              <Header inverted as="h4" content="About" />
-              <List link inverted>
-                <List.Item as="a"> Back to the Top </List.Item>{" "}
-                <List.Item as="a"> School Districts </List.Item>{" "}
-                <List.Item as="a"> Our Programs </List.Item>{" "}
-                <List.Item as="a"> Contact Us </List.Item>{" "}
-                <List.Item as="a"> Careers </List.Item>{" "}
-                <List.Item as="a"> FAQ </List.Item>{" "}
-              </List>{" "}
-            </Grid.Column>{" "}
-            <Grid.Column width={7}>
-              <Header inverted as="h4" content="Services" />
-              <Header as="h4" inverted>
-                info @prodigy - hc.com{" "}
-              </Header>{" "}
-              <p> (559) 892 - 9452 </p>{" "}
-              <Header as="h4" dimmed>
-                {" "}
-                © 2019 Prodigy Healthcare Inc.All Rights Reserved.{" "}
-              </Header>{" "}
-            </Grid.Column>{" "}
-          </Grid.Row>{" "}
-        </Grid>{" "}
-      </Container>{" "}
-    </Segment>{" "}
+    <Router>
+      <Segment
+        inverted
+        vertical
+        style={{
+          padding: "5em 0em"
+        }}
+      >
+        <Container>
+          <Grid divided inverted stackable>
+            <Grid.Row>
+              <Grid.Column width={3}>
+                <Header inverted as="h4" content="About" />
+                <List link inverted>
+                  <List.Item to="/" as="a">
+                    {" "}
+                    Back to the Top{" "}
+                  </List.Item>{" "}
+                  <List.Item to="/" as="a">
+                    {" "}
+                    School Districts{" "}
+                  </List.Item>{" "}
+                  <List.Item as="a"> Our Programs </List.Item>{" "}
+                  <List.Item to="/ReferralPage" as="a">
+                    {" "}
+                    Contact Us{" "}
+                  </List.Item>{" "}
+                  <List.Item as="a"> Careers </List.Item>{" "}
+                  <List.Item as="a"> FAQ </List.Item>{" "}
+                </List>{" "}
+              </Grid.Column>{" "}
+              <Grid.Column width={7}>
+                <Header inverted as="h4" content="Services" />
+                <Header as="h4" inverted>
+                  info @prodigy - hc.com{" "}
+                </Header>{" "}
+                <p> (559) 892 - 9452 </p>{" "}
+                <Header as="h4" dimmed>
+                  {" "}
+                  © 2019 Prodigy Healthcare Inc.All Rights Reserved.{" "}
+                </Header>{" "}
+              </Grid.Column>{" "}
+            </Grid.Row>{" "}
+          </Grid>{" "}
+        </Container>{" "}
+      </Segment>{" "}
+    </Router>{" "}
   </ResponsiveContainer>
 );
 export default HomepageLayout;
