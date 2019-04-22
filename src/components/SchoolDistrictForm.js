@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import {
-  Grid,
-  Image,
   Button,
   Form,
   Segment,
@@ -10,9 +8,10 @@ import {
   Menu,
   Container,
   Visibility,
-  TextArea,
-  Checkbox
+  Image
 } from "semantic-ui-react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import Footer from "./Footer";
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
 
@@ -68,10 +67,11 @@ class ReferralForm extends Component {
                   size="large"
                 >
                   <Container>
-                    <Menu.Item as="a" active>
-                      Home{" "}
-                    </Menu.Item>{" "}
-                    <Menu.Item as="a"> Our Programs </Menu.Item>{" "}
+                    <Link as="a" to="/" inverted={!fixed}>
+                      <Menu.Item as="a" active>
+                        Home{" "}
+                      </Menu.Item>{" "}
+                    </Link>{" "}
                     <Menu.Item position="right">
                       <Button as="a" inverted={!fixed}>
                         School Districts{" "}
@@ -79,6 +79,13 @@ class ReferralForm extends Component {
                     </Menu.Item>{" "}
                   </Container>{" "}
                 </Menu>{" "}
+                <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
+                <h1> Are you a School District ? </h1>{" "}
+                <p> We will have a Prodigy Administrator reach out to you! </p>{" "}
+                <p>
+                  Prodigy Healthcare provides specialed programs designed for
+                  integtration in educational systems.{" "}
+                </p>{" "}
               </Segment>{" "}
             </Visibility>{" "}
             {children}{" "}
@@ -106,8 +113,9 @@ class ReferralForm extends Component {
               <Form.TextArea placeholder="How May We Assit you?" />
               <Button type="submit"> Send </Button>{" "}
             </Form>{" "}
-          </div>
+          </div>{" "}
         </Fragment>{" "}
+        <Footer />
       </div>
     );
   }

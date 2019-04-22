@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from "react";
 import {
-  Grid,
-  Header,
   Button,
   Form,
   Segment,
@@ -20,7 +18,7 @@ const getWidth = () => {
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
-class ReferralForm extends Component {
+class CareersForm extends Component {
   state = {};
 
   hideFixedMenu = () =>
@@ -75,21 +73,20 @@ class ReferralForm extends Component {
                       </Menu.Item>{" "}
                     </Link>{" "}
                     <Menu.Item position="right">
-                      <Link to="/SchoolDistrictForm">
-                        <Button as="a" inverted={!fixed}>
-                          School Districts{" "}
-                        </Button>{" "}
-                      </Link>
+                      <Button as="a" inverted={!fixed}>
+                        School Districts{" "}
+                      </Button>{" "}
                     </Menu.Item>{" "}
                   </Container>{" "}
                 </Menu>{" "}
+                {children}{" "}
                 <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
-                <h1> Let Prodigy Healthcare Reach out to you </h1>{" "}
-                <p> Please Include your information </p>{" "}
-                <p>Prodigy will reach out to you upon request. </p>{" "}
+                <h1> Careers </h1> <p> Please send us your resume! </p>{" "}
+                <p>
+                  Prodigy Healthcare would love to know why you are a good fit.{" "}
+                </p>{" "}
               </Segment>{" "}
             </Visibility>{" "}
-            {children}{" "}
           </Responsive>{" "}
           <Form
             veritcal
@@ -107,8 +104,11 @@ class ReferralForm extends Component {
             <Form.Field>
               <h1> Phone Number </h1> <input placeholder="(---)---_----" />
             </Form.Field>{" "}
-            <h1> Message </h1>{" "}
-            <Form.TextArea placeholder="How May We Assit you?" />
+            <Form.Field>
+              <h1> Resume / CV </h1> <Button type="attached"> Resume </Button>{" "}
+            </Form.Field>{" "}
+            <h1> Cover Letter </h1>{" "}
+            <Form.TextArea placeholder="Include a cover letter for our Hiring Team!" />
             <Button type="submit"> Send </Button>{" "}
           </Form>{" "}
         </Fragment>{" "}
@@ -118,4 +118,4 @@ class ReferralForm extends Component {
   }
 }
 
-export default ReferralForm;
+export default CareersForm;
