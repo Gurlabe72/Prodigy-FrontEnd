@@ -80,11 +80,6 @@ class CareersForm extends Component {
                   </Container>{" "}
                 </Menu>{" "}
                 {children}{" "}
-                <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
-                <h1> Careers </h1> <p> Please send us your resume! </p>{" "}
-                <p>
-                  Prodigy Healthcare would love to know why you are a good fit.{" "}
-                </p>{" "}
               </Segment>{" "}
             </Visibility>{" "}
           </Responsive>{" "}
@@ -95,6 +90,12 @@ class CareersForm extends Component {
               padding: "1em"
             }}
           >
+            <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
+            <h1 style={{ textAlign: "center" }}> Careers </h1>{" "}
+            <p style={{ textAlign: "center" }}> Please send us your resume! </p>{" "}
+            <p style={{ textAlign: "center" }}>
+              Prodigy Healthcare would love to know why you are a good fit.{" "}
+            </p>{" "}
             <Form.Field>
               <h1> Name </h1> <input placeholder="Enter your name" />
             </Form.Field>{" "}

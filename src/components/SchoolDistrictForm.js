@@ -79,13 +79,6 @@ class ReferralForm extends Component {
                     </Menu.Item>{" "}
                   </Container>{" "}
                 </Menu>{" "}
-                <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
-                <h1> Are you a School District ? </h1>{" "}
-                <p> We will have a Prodigy Administrator reach out to you! </p>{" "}
-                <p>
-                  Prodigy Healthcare provides specialed programs designed for
-                  integtration in educational systems.{" "}
-                </p>{" "}
               </Segment>{" "}
             </Visibility>{" "}
             {children}{" "}
@@ -98,6 +91,19 @@ class ReferralForm extends Component {
                 padding: "1em"
               }}
             >
+              <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
+              <h1 style={{ textAlign: "center" }}>
+                {" "}
+                Are you a School District ?{" "}
+              </h1>{" "}
+              <p style={{ textAlign: "center" }}>
+                {" "}
+                We will have a Prodigy Administrator reach out to you!{" "}
+              </p>{" "}
+              <p style={{ textAlign: "center" }}>
+                Prodigy Healthcare provides specialed programs designed for
+                integtration in educational systems.{" "}
+              </p>{" "}
               <Form.Field>
                 <h1> School District Name </h1>{" "}
                 <input placeholder="Enter your name" />

@@ -277,7 +277,7 @@ const HomepageLayout = () => (
     </Segment>{" "}
     <Segment
       style={{
-        padding: "5em 0em"
+        padding: "2em 0em"
       }}
       vertical
     >

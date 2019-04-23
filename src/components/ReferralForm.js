@@ -79,14 +79,10 @@ class ReferralForm extends Component {
                         <Button as="a" inverted={!fixed}>
                           School Districts{" "}
                         </Button>{" "}
-                      </Link>
+                      </Link>{" "}
                     </Menu.Item>{" "}
                   </Container>{" "}
                 </Menu>{" "}
-                <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
-                <h1> Let Prodigy Healthcare Reach out to you </h1>{" "}
-                <p> Please Include your information </p>{" "}
-                <p>Prodigy will reach out to you upon request. </p>{" "}
               </Segment>{" "}
             </Visibility>{" "}
             {children}{" "}
@@ -98,6 +94,19 @@ class ReferralForm extends Component {
               padding: "1em"
             }}
           >
+            <Image centered src="http://i67.tinypic.com/2dkjuaa.png" />
+            <h1 style={{ textAlign: "center" }}>
+              {" "}
+              Let Prodigy Healthcare reach out to you{" "}
+            </h1>{" "}
+            <p style={{ textAlign: "center" }}>
+              {" "}
+              Please include your information{" "}
+            </p>{" "}
+            <p style={{ textAlign: "center" }}>
+              {" "}
+              Prodigy will reach out to you upon request.{" "}
+            </p>{" "}
             <Form.Field>
               <h1> Name </h1> <input placeholder="Enter your name" />
             </Form.Field>{" "}

@@ -30,20 +30,21 @@ export default class Footer extends Component {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="About" />
                   <List link inverted>
+                    <Link to="/">
+                      <List.Item as="a"> Home </List.Item>{" "}
+                    </Link>{" "}
+                    <br />
                     <Link to="/SchoolDistrictForm">
-                      <List.Item to="/" as="a">
-                        {" "}
-                        School Districts{" "}
-                      </List.Item>{" "}
+                      <List.Item as="a"> School Districts </List.Item>{" "}
                     </Link>{" "}
                     <br />
                     <Link to="/ReferralForm">
                       <List.Item as="a"> Contact Us </List.Item>{" "}
-                    </Link>
+                    </Link>{" "}
                     <br />
                     <Link to="/CareersForm">
                       <List.Item as="a"> Careers </List.Item>{" "}
-                    </Link>
+                    </Link>{" "}
                     <br />
                     <List.Item as="a"> FAQ </List.Item>{" "}
                   </List>{" "}
